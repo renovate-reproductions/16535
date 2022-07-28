@@ -1,0 +1,50 @@
+{
+  // docs: https://docs.renovatebot.com/configuration-options/
+
+  extends: ['config:base'],
+  // includes a lot of defaults, see: https://docs.renovatebot.com/presets-config/
+  major: {
+    // major version updates will be added to the renovate dashboard (website or the issue)
+    // and have to be scheduled manually from there
+    dependencyDashboardApproval: true,
+    stabilityDays: 14,
+    schedule: ['after 6am and before 8am on monday'],
+  },
+  // waits for one week until creating a PR (branch is still created but will have a pending state)
+  stabilityDays: 7,
+  prCreation: 'not-pending',
+  // for onboarding (can be adjusted after initial setup)
+  prHourlyLimit: 2,
+  prConcurrentLimit: 10,
+  // uncomment the line below after initial setup so that we only have to deal with PRs at the start of the week
+  schedule: ['after 6am and before 8pm on saturday and sunday', 'after 6am and before 4pm on monday'],
+  // formatting of PRs, title, branches etc.
+  branchPrefix: 'deps/',
+  // with additionalBranchPrefix we could add template values if we wanted
+  //  additionalBranchPrefix: ""
+  commitMessagePrefix: 'chore(deps): ',
+  // same as PR title
+  labels: ['chore'],
+  packageRules: [
+    {
+      // groups all non-major dev updates of dev dependencies into a single PR
+      matchDepTypes: ['devDependencies'],
+      matchUpdateTypes: ['patch', 'minor'],
+      groupName: 'devDependencies (non-major)',
+    },
+    {
+      // disable update of engines in package.json
+      matchDepTypes: ['engines'],
+      enabled: false,
+    },
+  ],
+  'docker-compose': {
+    enabled: false,
+  },
+  constraints: {
+    yarn: '1.19.1',
+  },
+  dockerfile: {
+    enabled: false,
+  },
+}
