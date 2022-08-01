@@ -18,5 +18,6 @@
   },
   "dependencies": {
     "aws-cdk": "1.133.0"
-  }
+  },
+  "packageManager": "^yarn@1.22.19"
 }
