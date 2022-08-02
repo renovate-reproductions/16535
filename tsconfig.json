@@ -15,9 +15,9 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "sourceMap": true,
-    "types": [
-      "node"
-    ]
+    "sourceMap": true
+    // "types": [
+    //   "node"
+    // ]
   }
 }

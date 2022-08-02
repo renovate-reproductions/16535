@@ -4,6 +4,8 @@
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+*.js
+*.js.map
 
 .DS_Store
 node_modules
